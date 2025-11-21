@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layouts - Autenticação e Acesso</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .layout-preview {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .layout-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .layout-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sidemenu">
+        <div class="sidemenu-header">
+            <i class="bi bi-layout-text-window-reverse"></i>
+            <h2>Layouts</h2>
+        </div>
+        <ul class="sidemenu-list">
+            <li><a href="#autenticacao" class="sidemenu-link active" data-section="autenticacao">
+                    <i class="bi bi-shield-lock"></i> Autenticação e Acesso
+                </a></li>
+            <li><a href="#login" class="sidemenu-link" data-section="login">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                </a></li>
+            <li><a href="#register" class="sidemenu-link" data-section="register">
+                    <i class="bi bi-person-plus"></i> Register / Sign up
+                </a></li>
+            <li><a href="#forgot" class="sidemenu-link" data-section="forgot">
+                    <i class="bi bi-key"></i> Esqueci a senha / Recuperação
+                </a></li>
+            <li><a href="#reset" class="sidemenu-link" data-section="reset">
+                    <i class="bi bi-arrow-repeat"></i> Redefinição de senha
+                </a></li>
+            <li><a href="#2fa" class="sidemenu-link" data-section="2fa">
+                    <i class="bi bi-shield-check"></i> Two-factor authentication
+                </a></li>
+        </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle">
+        <i class="bi bi-list"></i>
+    </button>
+    <div class="container" style="margin-left: 260px;">
+        <header>
+            <h1><i class="bi bi-layout-text-window-reverse"></i> Layouts de Autenticação</h1>
+            <p>Exemplos de páginas para autenticação e acesso de usuários</p>
+        </header>
+        <section id="autenticacao" class="section content-section active">
+            <div class="layout-preview">
+                <div class="layout-title"><i class="bi bi-shield-lock"></i> Autenticação e Acesso</div>
+                <div class="layout-desc">Páginas essenciais para login, registro, recuperação e segurança de acesso.
+                </div>
+            </div>
+        </section>
+        <section id="login" class="section content-section">
+            <div class="layout-preview">
+                <div class="layout-title"><i class="bi bi-box-arrow-in-right"></i> Login</div>
+                <div class="layout-desc">Formulário de login para acesso ao sistema.</div>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">Email</label>
+                        <input type="email" id="loginEmail" class="form-input" placeholder="exemplo@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Senha</label>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="••••••••">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="register" class="section content-section">
+            <div class="layout-preview">
+                <div class="layout-title"><i class="bi bi-person-plus"></i> Register / Sign up</div>
+                <div class="layout-desc">Formulário para criação de nova conta.</div>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="regName" class="form-label">Nome Completo</label>
+                        <input type="text" id="regName" class="form-input" placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail" class="form-label">Email</label>
+                        <input type="email" id="regEmail" class="form-input" placeholder="exemplo@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword" class="form-label">Senha</label>
+                        <input type="password" id="regPassword" class="form-input" placeholder="••••••••">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="forgot" class="section content-section">
+            <div class="layout-preview">
+                <div class="layout-title"><i class="bi bi-key"></i> Esqueci a senha / Recuperação</div>
+                <div class="layout-desc">Formulário para solicitar recuperação de senha.</div>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="forgotEmail" class="form-label">Email</label>
+                        <input type="email" id="forgotEmail" class="form-input" placeholder="exemplo@email.com">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Recuperar Senha</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="reset" class="section content-section">
+            <div class="layout-preview">
+                <div class="layout-title"><i class="bi bi-arrow-repeat"></i> Redefinição de senha</div>
+                <div class="layout-desc">Formulário para redefinir a senha do usuário.</div>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="resetPassword" class="form-label">Nova Senha</label>
+                        <input type="password" id="resetPassword" class="form-input" placeholder="••••••••">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetPassword2" class="form-label">Confirmar Nova Senha</label>
+                        <input type="password" id="resetPassword2" class="form-input" placeholder="••••••••">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Redefinir Senha</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="2fa" class="section content-section">
+            <div class="layout-preview">
+                <div class="layout-title"><i class="bi bi-shield-check"></i> Two-factor authentication</div>
+                <div class="layout-desc">Verificação em duas etapas para maior segurança.</div>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="code2fa" class="form-label">Código de Verificação</label>
+                        <input type="text" id="code2fa" class="form-input" placeholder="Digite o código">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Verificar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
