@@ -278,6 +278,198 @@ function goToMiniRecipe(index) {
     // No longer needed with grid layout
 }
 
+// ================================
+// RECIPE CALCULATOR FUNCTIONS
+// ================================
+
+// Recipe Data Storage
+let selectedRecipeData = {
+    id: 'cookies',
+    name: 'Cookies de Chocolate',
+    totalIngredients: 45.80,
+    ingredients: [
+        { name: 'Farinha de Trigo', quantity: '2.5 kg', value: 12.50 },
+        { name: 'Açúcar', quantity: '1.5 kg', value: 8.25 },
+        { name: 'Manteiga', quantity: '500 g', value: 15.00 },
+        { name: 'Ovos', quantity: '12 unidades', value: 9.60 },
+        { name: 'Chocolate em Gotas', quantity: '300 g', value: 18.90 }
+    ]
+};
+
+const recipesDatabase = {
+    cookies: {
+        id: 'cookies',
+        name: 'Cookies de Chocolate',
+        totalIngredients: 45.80,
+        ingredients: [
+            { name: 'Farinha de Trigo', quantity: '2.5 kg', value: 12.50 },
+            { name: 'Açúcar', quantity: '1.5 kg', value: 8.25 },
+            { name: 'Manteiga', quantity: '500 g', value: 15.00 },
+            { name: 'Ovos', quantity: '12 unidades', value: 9.60 },
+            { name: 'Chocolate em Gotas', quantity: '300 g', value: 18.90 }
+        ]
+    },
+    cake: {
+        id: 'cake',
+        name: 'Bolo de Cenoura',
+        totalIngredients: 32.50,
+        ingredients: [
+            { name: 'Farinha de Trigo', quantity: '2 kg', value: 10.00 },
+            { name: 'Cenoura', quantity: '500 g', value: 4.50 },
+            { name: 'Ovos', quantity: '8 unidades', value: 6.40 },
+            { name: 'Açúcar', quantity: '1 kg', value: 5.50 },
+            { name: 'Óleo', quantity: '200 ml', value: 6.10 }
+        ]
+    },
+    bread: {
+        id: 'bread',
+        name: 'Pão Francês',
+        totalIngredients: 28.90,
+        ingredients: [
+            { name: 'Farinha de Trigo', quantity: '3 kg', value: 15.00 },
+            { name: 'Fermento', quantity: '50 g', value: 4.20 },
+            { name: 'Sal', quantity: '100 g', value: 1.50 },
+            { name: 'Açúcar', quantity: '100 g', value: 0.55 },
+            { name: 'Óleo', quantity: '150 ml', value: 4.60 },
+            { name: 'Água', quantity: '1.5 L', value: 3.05 }
+        ]
+    },
+    pizza: {
+        id: 'pizza',
+        name: 'Pizza Margherita',
+        totalIngredients: 52.00,
+        ingredients: [
+            { name: 'Farinha de Trigo', quantity: '1.5 kg', value: 7.50 },
+            { name: 'Queijo Mozzarella', quantity: '800 g', value: 24.00 },
+            { name: 'Molho de Tomate', quantity: '500 g', value: 8.50 },
+            { name: 'Manjericão', quantity: '50 g', value: 6.00 },
+            { name: 'Azeite', quantity: '200 ml', value: 6.00 }
+        ]
+    }
+};
+
+// Select Recipe
+function selectRecipe(element, recipeId) {
+    // Remove active class from all items
+    document.querySelectorAll('.recipe-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to selected item
+    element.classList.add('active');
+    
+    // Update selected recipe data
+    selectedRecipeData = recipesDatabase[recipeId];
+    
+    // Update ingredients panel
+    updateIngredientsPanel();
+}
+
+// Update Ingredients Panel
+function updateIngredientsPanel() {
+    const ingredientsList = document.querySelector('.ingredients-list');
+    
+    ingredientsList.innerHTML = selectedRecipeData.ingredients.map(ing => `
+        <div class="ingredient-item">
+            <div class="ingredient-name">${ing.name}</div>
+            <div class="ingredient-quantity">${ing.quantity}</div>
+            <div class="ingredient-value">R$ ${ing.value.toFixed(2)}</div>
+        </div>
+    `).join('');
+}
+
+// Calculate Recipe
+function calculateRecipe() {
+    // Show loading
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    loadingIndicator.style.display = 'block';
+    
+    setTimeout(() => {
+        // Get form values
+        const quantity = parseFloat(document.getElementById('quantity').value) || 50;
+        const monthlyProduction = parseFloat(document.getElementById('monthlyProduction').value) || 200;
+        const margin = parseFloat(document.getElementById('margin').value) || 30;
+        
+        // Get selected expenses
+        let totalExpenses = 0;
+        document.querySelectorAll('.expense-checkbox:checked').forEach(checkbox => {
+            const expenseItem = checkbox.closest('.expense-item');
+            const expenseValueText = expenseItem.querySelector('.expense-value').textContent;
+            const expenseValue = parseFloat(expenseValueText.replace('R$', '').replace(',', '.').trim());
+            totalExpenses += expenseValue;
+        });
+        
+        // Calculate costs
+        const ingredientCostTotal = selectedRecipeData.totalIngredients;
+        const ingredientCostUnit = ingredientCostTotal / quantity;
+        
+        // Calculate total cost per unit
+        const totalCostPerUnit = ingredientCostUnit + (totalExpenses / quantity);
+        
+        // Calculate profit
+        const profitPerUnit = totalCostPerUnit * (margin / 100);
+        const profitTotal = profitPerUnit * quantity;
+        
+        // Calculate sale price
+        const salePriceUnit = totalCostPerUnit + profitPerUnit;
+        const salePriceTotal = salePriceUnit * quantity;
+        
+        // Update results
+        document.getElementById('despesasTotais').textContent = `R$ ${totalExpenses.toFixed(2)}`;
+        document.getElementById('custoUnitario').textContent = `R$ ${ingredientCostUnit.toFixed(2)}`;
+        document.getElementById('custoTotal').textContent = `R$ ${ingredientCostTotal.toFixed(2)}`;
+        document.getElementById('precoPorFatia').textContent = `R$ ${totalCostPerUnit.toFixed(2)}`;
+        document.getElementById('lucroUnitario').textContent = `R$ ${profitPerUnit.toFixed(2)}`;
+        document.getElementById('lucroTotal').textContent = `R$ ${profitTotal.toFixed(2)}`;
+        document.getElementById('precoVendaUnidade').textContent = `R$ ${salePriceUnit.toFixed(2)}`;
+        document.getElementById('precoVendaTotal').textContent = `R$ ${salePriceTotal.toFixed(2)}`;
+        
+        // Hide loading
+        loadingIndicator.style.display = 'none';
+        
+        // Animate result cards
+        document.querySelectorAll('.result-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.4s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }, 800);
+}
+
+// Refresh Calculator
+function refreshCalculator() {
+    // Reset form
+    document.getElementById('quantity').value = '50';
+    document.getElementById('monthlyProduction').value = '200';
+    document.getElementById('margin').value = '30';
+    
+    // Reset checkboxes to default
+    document.querySelectorAll('.expense-checkbox').forEach((checkbox, index) => {
+        checkbox.checked = (index === 0 || index === 1 || index === 4); // exp1, exp2, exp5
+    });
+    
+    // Reset recipe selection
+    document.querySelectorAll('.recipe-item').forEach((item, index) => {
+        item.classList.remove('active');
+        if (index === 0) item.classList.add('active');
+    });
+    
+    selectedRecipeData = recipesDatabase.cookies;
+    updateIngredientsPanel();
+    
+    // Recalculate
+    calculateRecipe();
+}
+
+// Create Product (placeholder)
+function createProduct() {
+    alert('Produto criado com sucesso! Esta funcionalidade salvaria os dados calculados.');
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
     updateMiniRecipeGrid();
@@ -532,4 +724,155 @@ function setRating(star, rating) {
     if (ratingValue) {
         ratingValue.textContent = `${rating}.0 / 5.0`;
     }
+}
+
+// ================================
+// FORECAST (PREVISÃO) FUNCTIONS
+// ================================
+
+let selectedForecastRecipe = {
+    id: 'cookies',
+    name: 'Cookies de Chocolate',
+    yield: 24,
+    ingredients: 5,
+    value: 45.80
+};
+
+const forecastRecipesDatabase = {
+    cookies: {
+        id: 'cookies',
+        name: 'Cookies de Chocolate',
+        yield: 24,
+        ingredients: 5,
+        value: 45.80
+    },
+    cake: {
+        id: 'cake',
+        name: 'Bolo de Cenoura',
+        yield: 12,
+        ingredients: 5,
+        value: 32.50
+    },
+    bread: {
+        id: 'bread',
+        name: 'Pão Francês',
+        yield: 30,
+        ingredients: 6,
+        value: 28.90
+    }
+};
+
+// Select Forecast Recipe
+function selectForecastRecipe(element, recipeId) {
+    // Remove active class from all cards
+    document.querySelectorAll('.recipe-forecast-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    
+    // Add active class to selected card
+    element.classList.add('active');
+    
+    // Update selected recipe data
+    selectedForecastRecipe = forecastRecipesDatabase[recipeId];
+    
+    console.log('Receita selecionada:', selectedForecastRecipe);
+}
+
+// Prever Produção
+function preverProducao() {
+    const quantidade = parseInt(document.getElementById('quantidadeProducao').value) || 50;
+    const loadingForecast = document.getElementById('loadingForecast');
+    const forecastResults = document.getElementById('forecastResults');
+    const btnLimpar = document.getElementById('btnLimpar');
+    const resumoIngredientes = document.getElementById('resumoIngredientes');
+    
+    // Show loading
+    loadingForecast.style.display = 'flex';
+    
+    setTimeout(() => {
+        // Hide loading
+        loadingForecast.style.display = 'none';
+        
+        // Calculate forecast
+        const quantidadeMaxima = Math.floor(quantidade * 1.5); // 150% capacity
+        const percentagemDisponivel = 83; // 83% available
+        const custoUnitario = selectedForecastRecipe.value / selectedForecastRecipe.yield;
+        const custoEstimado = custoUnitario * quantidade;
+        
+        // Update results
+        document.getElementById('quantidadeMaxima').textContent = `${quantidadeMaxima} unidades`;
+        document.getElementById('quantidadeSolicitada').textContent = quantidade;
+        document.getElementById('custoEstimado').textContent = `R$ ${custoEstimado.toFixed(2)}`;
+        
+        // Determine status
+        let statusTexto = 'Produção Viável';
+        let statusClass = 'status-text';
+        if (percentagemDisponivel < 50) {
+            statusTexto = 'Produção Limitada';
+            statusClass = 'status-text-warning';
+        } else if (percentagemDisponivel < 100) {
+            statusTexto = 'Produção Parcial';
+            statusClass = 'status-text-partial';
+        }
+        
+        const statusElement = document.getElementById('statusPrevisao');
+        statusElement.textContent = statusTexto;
+        statusElement.className = statusClass;
+        
+        document.getElementById('percentagemTexto').textContent = 
+            `${percentagemDisponivel}% dos ingredientes disponíveis`;
+        
+        // Show results and summary
+        forecastResults.style.display = 'block';
+        btnLimpar.style.display = 'flex';
+        resumoIngredientes.style.display = 'flex';
+        
+        // Animate result cards
+        document.querySelectorAll('.forecast-result-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.4s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+        
+        // Show ingredients panel (hide empty state)
+        const emptyState = document.querySelector('.ingredients-empty-state');
+        if (emptyState) {
+            emptyState.style.display = 'none';
+        }
+        
+        // Scroll to results
+        forecastResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 1000);
+}
+
+// Limpar Resultados
+function limparResultados() {
+    const forecastResults = document.getElementById('forecastResults');
+    const btnLimpar = document.getElementById('btnLimpar');
+    const resumoIngredientes = document.getElementById('resumoIngredientes');
+    
+    // Hide results
+    forecastResults.style.display = 'none';
+    btnLimpar.style.display = 'none';
+    resumoIngredientes.style.display = 'none';
+    
+    // Reset input
+    document.getElementById('quantidadeProducao').value = '50';
+    
+    // Reset recipe selection
+    document.querySelectorAll('.recipe-forecast-card').forEach((card, index) => {
+        card.classList.remove('active');
+        if (index === 0) card.classList.add('active');
+    });
+    
+    selectedForecastRecipe = forecastRecipesDatabase.cookies;
+}
+
+// Comprar Ingrediente
+function comprarIngrediente(codigo) {
+    alert(`Redirecionar para compra do ingrediente COD: ${codigo}\nEsta funcionalidade conectaria com fornecedores ou sistema de compras.`);
 }

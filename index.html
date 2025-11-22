@@ -46,6 +46,12 @@
             <li><a href="#menus" class="sidemenu-link" data-section="menus">
                     <i class="bi bi-menu-button-wide"></i> <span>Menus</span>
                 </a></li>
+            <li><a href="#calculadora" class="sidemenu-link" data-section="calculadora">
+                    <i class="bi bi-calculator"></i> <span>Calculadora</span>
+                </a></li>
+            <li><a href="#previsao" class="sidemenu-link" data-section="previsao">
+                    <i class="bi bi-graph-up"></i> <span>Previsão</span>
+                </a></li>
             <li><a href="#multimidia" class="sidemenu-link" data-section="multimidia">
                     <i class="bi bi-play-circle"></i> <span>Multimídia</span>
                 </a></li>
@@ -5736,6 +5742,693 @@ public class MegaMenuItem
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>
                 </form>
+            </div>
+        </section>
+
+        <!-- CALCULADORA DE RECEITAS -->
+        <section id="calculadora" class="section content-section">
+            <h2><i class="bi bi-calculator"></i> Calculadora de Receitas</h2>
+            <p class="section-description">
+                <i class="bi bi-info-circle"></i> Layout completo para calculadora de custos e preços de venda de
+                receitas
+                culinárias.
+            </p>
+
+            <div class="component-group">
+                <h3>Recipe Calculator Layout</h3>
+
+                <!-- Calculator Container -->
+                <div class="recipe-calculator">
+
+                    <!-- 1. Page Header -->
+                    <div class="page-header">
+                        <div class="page-header-content">
+                            <h1 class="page-title">Calculadora de Receitas</h1>
+                            <p class="page-subtitle">Calcule custos e preços de venda com precisão</p>
+                        </div>
+                        <button class="btn-refresh" id="btnRefresh" onclick="refreshCalculator()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                        <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Recipe Selector -->
+                    <div class="recipe-selector-section">
+                        <h3 class="section-title"><i class="bi bi-book"></i> Selecione a Receita</h3>
+                        <div class="recipe-selector">
+                            <div class="recipe-item active" onclick="selectRecipe(this, 'cookies')">
+                                <div class="recipe-item-icon">
+                                    <i class="bi bi-cookie"></i>
+                                </div>
+                                <div class="recipe-item-info">
+                                    <h4>Cookies de Chocolate</h4>
+                                    <p class="recipe-total">R$ 45,80</p>
+                                </div>
+                                <div class="recipe-check">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                            </div>
+                            <div class="recipe-item" onclick="selectRecipe(this, 'cake')">
+                                <div class="recipe-item-icon">
+                                    <i class="bi bi-cake2"></i>
+                                </div>
+                                <div class="recipe-item-info">
+                                    <h4>Bolo de Cenoura</h4>
+                                    <p class="recipe-total">R$ 32,50</p>
+                                </div>
+                                <div class="recipe-check">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                            </div>
+                            <div class="recipe-item" onclick="selectRecipe(this, 'bread')">
+                                <div class="recipe-item-icon">
+                                    <i class="bi bi-basket"></i>
+                                </div>
+                                <div class="recipe-item-info">
+                                    <h4>Pão Francês</h4>
+                                    <p class="recipe-total">R$ 28,90</p>
+                                </div>
+                                <div class="recipe-check">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                            </div>
+                            <div class="recipe-item" onclick="selectRecipe(this, 'pizza')">
+                                <div class="recipe-item-icon">
+                                    <i class="bi bi-pie-chart"></i>
+                                </div>
+                                <div class="recipe-item-info">
+                                    <h4>Pizza Margherita</h4>
+                                    <p class="recipe-total">R$ 52,00</p>
+                                </div>
+                                <div class="recipe-check">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Recipe Ingredients Panel -->
+                    <div class="recipe-ingredients-panel">
+                        <h3 class="section-title"><i class="bi bi-egg-fried"></i> Ingredientes da Receita</h3>
+                        <div class="ingredients-list">
+                            <div class="ingredient-item">
+                                <div class="ingredient-name">Farinha de Trigo</div>
+                                <div class="ingredient-quantity">2.5 kg</div>
+                                <div class="ingredient-value">R$ 12,50</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-name">Açúcar</div>
+                                <div class="ingredient-quantity">1.5 kg</div>
+                                <div class="ingredient-value">R$ 8,25</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-name">Manteiga</div>
+                                <div class="ingredient-quantity">500 g</div>
+                                <div class="ingredient-value">R$ 15,00</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-name">Ovos</div>
+                                <div class="ingredient-quantity">12 unidades</div>
+                                <div class="ingredient-value">R$ 9,60</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-name">Chocolate em Gotas</div>
+                                <div class="ingredient-quantity">300 g</div>
+                                <div class="ingredient-value">R$ 18,90</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Expense Selector -->
+                    <div class="expense-selector-section">
+                        <h3 class="section-title"><i class="bi bi-cash-stack"></i> Despesas Adicionais</h3>
+                        <div class="expense-selector">
+                            <div class="expense-item">
+                                <input type="checkbox" id="exp1" class="expense-checkbox" checked>
+                                <label for="exp1" class="expense-label">
+                                    <span class="expense-name">Energia Elétrica</span>
+                                    <span class="expense-value">R$ 25,00</span>
+                                </label>
+                            </div>
+                            <div class="expense-item">
+                                <input type="checkbox" id="exp2" class="expense-checkbox" checked>
+                                <label for="exp2" class="expense-label">
+                                    <span class="expense-name">Gás</span>
+                                    <span class="expense-value">R$ 15,00</span>
+                                </label>
+                            </div>
+                            <div class="expense-item">
+                                <input type="checkbox" id="exp3" class="expense-checkbox">
+                                <label for="exp3" class="expense-label">
+                                    <span class="expense-name">Embalagens</span>
+                                    <span class="expense-value">R$ 12,50</span>
+                                </label>
+                            </div>
+                            <div class="expense-item">
+                                <input type="checkbox" id="exp4" class="expense-checkbox">
+                                <label for="exp4" class="expense-label">
+                                    <span class="expense-name">Mão de Obra</span>
+                                    <span class="expense-value">R$ 50,00</span>
+                                </label>
+                            </div>
+                            <div class="expense-item">
+                                <input type="checkbox" id="exp5" class="expense-checkbox" checked>
+                                <label for="exp5" class="expense-label">
+                                    <span class="expense-name">Água</span>
+                                    <span class="expense-value">R$ 8,00</span>
+                                </label>
+                            </div>
+                            <div class="expense-item">
+                                <input type="checkbox" id="exp6" class="expense-checkbox">
+                                <label for="exp6" class="expense-label">
+                                    <span class="expense-name">Marketing</span>
+                                    <span class="expense-value">R$ 20,00</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Calculation Form -->
+                    <div class="calculation-form">
+                        <h3 class="section-title"><i class="bi bi-sliders"></i> Configurações de Cálculo</h3>
+                        <div class="form-row-calc">
+                            <div class="form-group-calc">
+                                <label class="form-label-calc">Quantidade a Produzir</label>
+                                <input type="number" id="quantity" class="form-input-calc" placeholder="Ex: 50"
+                                    value="50" min="1">
+                            </div>
+                            <div class="form-group-calc">
+                                <label class="form-label-calc">Produção Mensal Estimada</label>
+                                <input type="number" id="monthlyProduction" class="form-input-calc"
+                                    placeholder="Ex: 200" value="200" min="1">
+                            </div>
+                            <div class="form-group-calc">
+                                <label class="form-label-calc">Margem de Lucro (%)</label>
+                                <input type="number" id="margin" class="form-input-calc" placeholder="Ex: 30" value="30"
+                                    min="0" max="100">
+                            </div>
+                        </div>
+                        <button class="btn-calculate" id="btnCalculate" onclick="calculateRecipe()">
+                            <i class="bi bi-calculator"></i> Calcular
+                        </button>
+                    </div>
+
+                    <!-- 6. Results Panel -->
+                    <div class="results-panel">
+                        <h3 class="section-title"><i class="bi bi-bar-chart-line"></i> Resultados do Cálculo</h3>
+                        <div class="results-grid">
+
+                            <!-- Card 1: Total Despesas -->
+                            <div class="result-card card-expenses" id="cardTotalExpenses">
+                                <div class="result-icon">
+                                    <i class="bi bi-wallet2"></i>
+                                </div>
+                                <div class="result-content">
+                                    <p class="result-label">Total Despesas</p>
+                                    <h3 class="result-value" id="despesasTotais">R$ 48,00</h3>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Custo Ingredientes -->
+                            <div class="result-card card-ingredients" id="cardIngredientCosts">
+                                <div class="result-icon">
+                                    <i class="bi bi-egg"></i>
+                                </div>
+                                <div class="result-content">
+                                    <p class="result-label">Custo Ingredientes</p>
+                                    <h3 class="result-value" id="custoUnitario">R$ 0,92</h3>
+                                    <p class="result-sublabel">Total: <span id="custoTotal">R$ 45,80</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Preço por Rendimento -->
+                            <div class="result-card card-yield" id="cardPrecoRendimento">
+                                <div class="result-icon">
+                                    <i class="bi bi-pie-chart-fill"></i>
+                                </div>
+                                <div class="result-content">
+                                    <p class="result-label">Preço por Unidade</p>
+                                    <h3 class="result-value" id="precoPorFatia">R$ 1,88</h3>
+                                </div>
+                            </div>
+
+                            <!-- Card 4: Lucros -->
+                            <div class="result-card card-profit" id="cardLucro">
+                                <div class="result-icon">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                </div>
+                                <div class="result-content">
+                                    <p class="result-label">Lucro Estimado</p>
+                                    <h3 class="result-value" id="lucroUnitario">R$ 0,56</h3>
+                                    <p class="result-sublabel">Total: <span id="lucroTotal">R$ 28,00</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Card 5: Preços de Venda -->
+                            <div class="result-card card-price" id="cardPrecoFinal">
+                                <div class="result-icon">
+                                    <i class="bi bi-tag-fill"></i>
+                                </div>
+                                <div class="result-content">
+                                    <p class="result-label">Preço de Venda</p>
+                                    <h3 class="result-value" id="precoVendaUnidade">R$ 2,44</h3>
+                                    <p class="result-sublabel">Total: <span id="precoVendaTotal">R$ 122,00</span></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 7. Final Action Button -->
+                    <button class="btn-create-product" id="btnCriarProduto" onclick="createProduct()">
+                        <i class="bi bi-plus-circle"></i> Criar Produto
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PREVISÃO DE PRODUÇÃO -->
+        <section id="previsao" class="section content-section">
+            <h2><i class="bi bi-graph-up"></i> Previsão de Produção</h2>
+            <p class="section-description">
+                <i class="bi bi-info-circle"></i> Layout completo para previsão de produção baseada em estoque e
+                demanda.
+            </p>
+
+            <div class="component-group">
+                <h3>Production Forecast Layout</h3>
+
+                <!-- Forecast Container -->
+                <div class="forecast-container">
+
+                    <!-- 1. Page Header -->
+                    <div class="forecast-header">
+                        <div class="forecast-header-content">
+                            <div class="header-titles">
+                                <h1 class="forecast-title">Previsão de Produção</h1>
+                                <p class="forecast-subtitle">Preveja a produção ideal com base no estoque e na demanda
+                                </p>
+                                <p class="forecast-summary" id="resumoIngredientes" style="display: none;">
+                                    <i class="bi bi-check-circle-fill"></i> Análise completa: 12 ingredientes
+                                    verificados
+                                </p>
+                            </div>
+                            <div class="header-actions">
+                                <div class="loading-indicator-forecast" id="loadingForecast" style="display: none;">
+                                    <div class="spinner"></div>
+                                </div>
+                                <button class="btn-clear" id="btnLimpar" onclick="limparResultados()"
+                                    style="display: none;">
+                                    <i class="bi bi-x-circle"></i> Limpar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Recipe Selection -->
+                    <div class="forecast-section">
+                        <h3 class="forecast-section-title">
+                            <i class="bi bi-book"></i> Selecione uma Receita
+                        </h3>
+                        <div class="recipe-collection" id="recipeCollection">
+                            <!-- Recipe Item 1 -->
+                            <div class="recipe-forecast-card active" onclick="selectForecastRecipe(this, 'cookies')">
+                                <div class="recipe-forecast-border">
+                                    <div class="recipe-forecast-content">
+                                        <div class="recipe-icon-wrapper">
+                                            <div class="recipe-icon">
+                                                <i class="bi bi-cookie"></i>
+                                            </div>
+                                            <div class="selection-indicator">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                            </div>
+                                        </div>
+                                        <h4 class="recipe-name">Cookies de Chocolate</h4>
+                                        <div class="recipe-info-grid">
+                                            <p class="recipe-info-item">
+                                                <i class="bi bi-pie-chart"></i> Rendimento: <strong>24 unidades</strong>
+                                            </p>
+                                            <p class="recipe-info-item">
+                                                <i class="bi bi-basket"></i> <strong>5</strong> ingredientes
+                                            </p>
+                                        </div>
+                                        <div class="recipe-value-badge">
+                                            <span class="value-label">Valor:</span>
+                                            <span class="value-amount">R$ 45,80</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Recipe Item 2 -->
+                            <div class="recipe-forecast-card" onclick="selectForecastRecipe(this, 'cake')">
+                                <div class="recipe-forecast-border">
+                                    <div class="recipe-forecast-content">
+                                        <div class="recipe-icon-wrapper">
+                                            <div class="recipe-icon">
+                                                <i class="bi bi-cake2"></i>
+                                            </div>
+                                            <div class="selection-indicator">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                            </div>
+                                        </div>
+                                        <h4 class="recipe-name">Bolo de Cenoura</h4>
+                                        <div class="recipe-info-grid">
+                                            <p class="recipe-info-item">
+                                                <i class="bi bi-pie-chart"></i> Rendimento: <strong>12 fatias</strong>
+                                            </p>
+                                            <p class="recipe-info-item">
+                                                <i class="bi bi-basket"></i> <strong>5</strong> ingredientes
+                                            </p>
+                                        </div>
+                                        <div class="recipe-value-badge">
+                                            <span class="value-label">Valor:</span>
+                                            <span class="value-amount">R$ 32,50</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Recipe Item 3 -->
+                            <div class="recipe-forecast-card" onclick="selectForecastRecipe(this, 'bread')">
+                                <div class="recipe-forecast-border">
+                                    <div class="recipe-forecast-content">
+                                        <div class="recipe-icon-wrapper">
+                                            <div class="recipe-icon">
+                                                <i class="bi bi-basket"></i>
+                                            </div>
+                                            <div class="selection-indicator">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                            </div>
+                                        </div>
+                                        <h4 class="recipe-name">Pão Francês</h4>
+                                        <div class="recipe-info-grid">
+                                            <p class="recipe-info-item">
+                                                <i class="bi bi-pie-chart"></i> Rendimento: <strong>30 unidades</strong>
+                                            </p>
+                                            <p class="recipe-info-item">
+                                                <i class="bi bi-basket"></i> <strong>6</strong> ingredientes
+                                            </p>
+                                        </div>
+                                        <div class="recipe-value-badge">
+                                            <span class="value-label">Valor:</span>
+                                            <span class="value-amount">R$ 28,90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Empty State -->
+                            <div class="recipe-empty-state" style="display: none;">
+                                <div class="empty-state-icon">
+                                    <i class="bi bi-inbox"></i>
+                                </div>
+                                <h4>Sem receitas de momento</h4>
+                                <p>Adicione receitas para começar a previsão</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Production Quantity Input -->
+                    <div class="forecast-section">
+                        <div class="quantity-input-container">
+                            <h3 class="forecast-section-title">
+                                <i class="bi bi-plus-slash-minus"></i> Quantidade para Produção
+                            </h3>
+                            <div class="quantity-input-grid">
+                                <div class="input-field-wrapper">
+                                    <label class="input-label">Quantidade Desejada</label>
+                                    <input type="number" id="quantidadeProducao" class="quantity-input"
+                                        placeholder="Ex: 50" value="50" min="1">
+                                </div>
+                                <button class="btn-forecast" id="btnPrevisao" onclick="preverProducao()">
+                                    <i class="bi bi-graph-up"></i> Prever
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Forecast Results -->
+                    <div class="forecast-results" id="forecastResults" style="display: none;">
+                        <h3 class="forecast-section-title">
+                            <i class="bi bi-clipboard-data"></i> Resultados da Previsão
+                        </h3>
+
+                        <div class="results-grid-forecast">
+                            <!-- Status Card -->
+                            <div class="forecast-result-card card-status">
+                                <div class="forecast-card-header">
+                                    <span class="card-emoji">✅</span>
+                                    <h4>Status da Previsão</h4>
+                                </div>
+                                <div class="forecast-card-content">
+                                    <p class="status-text" id="statusPrevisao">Produção Viável</p>
+                                    <p class="percentage-text" id="percentagemTexto">100% dos ingredientes disponíveis
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Max Quantity Card -->
+                            <div class="forecast-result-card card-quantity">
+                                <div class="forecast-card-header">
+                                    <span class="card-emoji">📊</span>
+                                    <h4>Quantidade Máxima</h4>
+                                </div>
+                                <div class="forecast-card-content">
+                                    <p class="quantity-max" id="quantidadeMaxima">75 unidades</p>
+                                    <p class="quantity-requested">Solicitado: <span id="quantidadeSolicitada">50</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Cost Card -->
+                            <div class="forecast-result-card card-cost">
+                                <div class="forecast-card-header">
+                                    <span class="card-emoji">💰</span>
+                                    <h4>Custo Estimado</h4>
+                                </div>
+                                <div class="forecast-card-content">
+                                    <p class="cost-value" id="custoEstimado">R$ 95,40</p>
+                                </div>
+                            </div>
+
+                            <!-- Summary Card -->
+                            <div class="forecast-result-card card-summary">
+                                <div class="forecast-card-header">
+                                    <span class="card-emoji">📋</span>
+                                    <h4>Resumo Ingredientes</h4>
+                                </div>
+                                <div class="forecast-card-content">
+                                    <div class="summary-item summary-ok">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span><strong>4</strong> suficientes</span>
+                                    </div>
+                                    <div class="summary-item summary-partial">
+                                        <i class="bi bi-exclamation-circle-fill"></i>
+                                        <span><strong>1</strong> parcial</span>
+                                    </div>
+                                    <div class="summary-item summary-missing">
+                                        <i class="bi bi-x-circle-fill"></i>
+                                        <span><strong>0</strong> insuficientes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Ingredients Panel -->
+                    <div class="forecast-section">
+                        <h3 class="forecast-section-title">
+                            <i class="bi bi-egg-fried"></i> Painel de Ingredientes
+                        </h3>
+
+                        <div class="ingredients-panel" id="ingredientsPanel">
+                            <!-- Ingredient Item 1 -->
+                            <div class="ingredient-forecast-card">
+                                <div class="ingredient-header">
+                                    <div class="ingredient-code">
+                                        <i class="bi bi-hash"></i> COD: 1001
+                                    </div>
+                                    <div class="ingredient-status status-ok">
+                                        <i class="bi bi-check-circle-fill"></i> Disponível
+                                    </div>
+                                </div>
+                                <h4 class="ingredient-title">Farinha de Trigo</h4>
+
+                                <div class="ingredient-info-grid">
+                                    <!-- Stock Card -->
+                                    <div class="info-card">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-box-seam"></i>
+                                            <span>Estoque</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">5.0 kg</p>
+                                            <p class="info-label">Necessário: <strong>2.5 kg</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Capacity Card -->
+                                    <div class="info-card">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-speedometer"></i>
+                                            <span>Capacidade</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">100 unidades</p>
+                                            <p class="info-label">Produzíveis</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cost Card -->
+                                    <div class="info-card info-card-full">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-cash"></i>
+                                            <span>Custo Total</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">R$ 12,50</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ingredient Item 2 (Partial) -->
+                            <div class="ingredient-forecast-card">
+                                <div class="ingredient-header">
+                                    <div class="ingredient-code">
+                                        <i class="bi bi-hash"></i> COD: 1002
+                                    </div>
+                                    <div class="ingredient-status status-partial">
+                                        <i class="bi bi-exclamation-circle-fill"></i> Parcial
+                                    </div>
+                                </div>
+                                <h4 class="ingredient-title">Açúcar</h4>
+
+                                <div class="ingredient-info-grid">
+                                    <div class="info-card">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-box-seam"></i>
+                                            <span>Estoque</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">1.0 kg</p>
+                                            <p class="info-label">Necessário: <strong>1.5 kg</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="info-card">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-speedometer"></i>
+                                            <span>Capacidade</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">33 unidades</p>
+                                            <p class="info-label">Produzíveis</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="info-card info-card-full">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-cash"></i>
+                                            <span>Custo Total</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">R$ 8,25</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Alert Action -->
+                                <div class="ingredient-alert">
+                                    <div class="alert-content">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                        <span>Estoque insuficiente para quantidade solicitada</span>
+                                    </div>
+                                    <button class="btn-buy" onclick="comprarIngrediente('1002')">
+                                        <i class="bi bi-cart-plus"></i> Comprar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Ingredient Item 3 (Missing) -->
+                            <div class="ingredient-forecast-card">
+                                <div class="ingredient-header">
+                                    <div class="ingredient-code">
+                                        <i class="bi bi-hash"></i> COD: 1003
+                                    </div>
+                                    <div class="ingredient-status status-missing">
+                                        <i class="bi bi-x-circle-fill"></i> Falta
+                                    </div>
+                                </div>
+                                <h4 class="ingredient-title">Manteiga</h4>
+
+                                <div class="ingredient-info-grid">
+                                    <div class="info-card">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-box-seam"></i>
+                                            <span>Estoque</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">0 g</p>
+                                            <p class="info-label">Necessário: <strong>500 g</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="info-card">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-speedometer"></i>
+                                            <span>Capacidade</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">0 unidades</p>
+                                            <p class="info-label">Produzíveis</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="info-card info-card-full">
+                                        <div class="info-card-header">
+                                            <i class="bi bi-cash"></i>
+                                            <span>Custo Total</span>
+                                        </div>
+                                        <div class="info-card-content">
+                                            <p class="info-value">R$ 15,00</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ingredient-alert alert-danger">
+                                    <div class="alert-content">
+                                        <i class="bi bi-x-octagon-fill"></i>
+                                        <span>Ingrediente esgotado - compra necessária</span>
+                                    </div>
+                                    <button class="btn-buy btn-buy-urgent" onclick="comprarIngrediente('1003')">
+                                        <i class="bi bi-cart-plus"></i> Comprar Agora
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Empty State -->
+                            <div class="ingredients-empty-state" style="display: none;">
+                                <div class="empty-state-content">
+                                    <div class="empty-icon-wrapper">
+                                        <i class="bi bi-clipboard2-data"></i>
+                                    </div>
+                                    <h4>Aguardando Análise</h4>
+                                    <p>Selecione uma receita e defina a quantidade para iniciar a análise de
+                                        ingredientes</p>
+                                    <button class="btn-start-analysis" onclick="preverProducao()">
+                                        <i class="bi bi-play-circle"></i> Começar Análise
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
