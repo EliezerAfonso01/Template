@@ -229,6 +229,60 @@ function moveCardCarousel(direction) {
     cards[currentCardIndex].classList.add('active');
 }
 
+// Recipe Cards Carousel
+let currentRecipeIndex = 0;
+
+function moveRecipeCarousel(direction) {
+    const recipeCards = document.querySelectorAll('.recipe-card');
+    recipeCards[currentRecipeIndex].classList.remove('active');
+    currentRecipeIndex = (currentRecipeIndex + direction + recipeCards.length) % recipeCards.length;
+    recipeCards[currentRecipeIndex].classList.add('active');
+}
+
+// Mini Recipe Cards Grid
+function updateMiniRecipeGrid() {
+    const track = document.querySelector('.carousel-mini-recipe-track');
+    if (!track) return;
+    
+    const visibleCards = Array.from(track.querySelectorAll('.mini-recipe-card:not(.hidden)'));
+    const itemCount = visibleCards.length;
+    
+    // Set data attribute for CSS grid styling
+    track.setAttribute('data-items', itemCount);
+}
+
+function filterMiniRecipes(searchTerm) {
+    const cards = document.querySelectorAll('.mini-recipe-card');
+    searchTerm = searchTerm.toLowerCase();
+    
+    cards.forEach((card) => {
+        const recipeName = card.getAttribute('data-recipe-name').toLowerCase();
+        const recipeTitle = card.querySelector('h5').textContent.toLowerCase();
+        
+        if (recipeName.includes(searchTerm) || recipeTitle.includes(searchTerm)) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+    
+    updateMiniRecipeGrid();
+}
+
+// Dummy functions for backward compatibility (buttons removed but keeping functions)
+function moveMiniRecipeCarousel(direction) {
+    // No longer needed with grid layout
+}
+
+function goToMiniRecipe(index) {
+    // No longer needed with grid layout
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateMiniRecipeGrid();
+});
+
 // Hamburger Menu
 function toggleHamburger() {
     const btn = document.getElementById('hamburgerBtn');

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-pt">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blazor UI</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎨</text></svg>">
+    <link rel="apple-touch-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234F46E5'/><text x='50' y='70' text-anchor='middle' font-size='60' fill='white'>B</text></svg>">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -3075,6 +3082,223 @@ public class MegaMenuItem
                     <button class="carousel-btn next" onclick="moveCardCarousel(1)"><i
                             class="bi bi-chevron-right"></i></button>
                 </div>
+
+                <!-- Recipe Cards Carousel -->
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; color: var(--text-secondary);">Recipe
+                    Cards Carousel</h4>
+                <div class="carousel-recipe">
+                    <button class="carousel-btn prev" onclick="moveRecipeCarousel(-1)"><i
+                            class="bi bi-chevron-left"></i></button>
+                    <div class="carousel-recipe-track">
+                        <div class="recipe-card active">
+                            <div class="recipe-card-image">
+                                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=350&h=250&fit=crop"
+                                    alt="Chocolate Chip Cookies">
+                                <span class="recipe-badge"><i class="bi bi-clock"></i> 30 min</span>
+                            </div>
+                            <div class="recipe-card-content">
+                                <h4>Chocolate Chip Cookies</h4>
+                                <p class="recipe-card-description">Classic homemade cookies with chocolate chips. Soft,
+                                    chewy, and absolutely delicious!</p>
+                                <div class="recipe-card-meta">
+                                    <span class="recipe-difficulty"><i class="bi bi-signal"></i> Easy</span>
+                                    <span class="recipe-servings"><i class="bi bi-egg-fried"></i> 24 cookies</span>
+                                </div>
+                                <div class="recipe-card-footer">
+                                    <div class="recipe-card-price">
+                                        <span class="price-label">Cost per serving:</span>
+                                        <span class="price-value">$0.75</span>
+                                    </div>
+                                    <button class="btn btn-sm btn-primary">
+                                        <i class="bi bi-bookmark"></i> Save Recipe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recipe-card">
+                            <div class="recipe-card-image">
+                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=350&h=250&fit=crop"
+                                    alt="Homemade Burger">
+                                <span class="recipe-badge"><i class="bi bi-clock"></i> 45 min</span>
+                            </div>
+                            <div class="recipe-card-content">
+                                <h4>Gourmet Beef Burger</h4>
+                                <p class="recipe-card-description">Juicy beef patty with caramelized onions, melted
+                                    cheese, and special sauce on a brioche bun.</p>
+                                <div class="recipe-card-meta">
+                                    <span class="recipe-difficulty"><i class="bi bi-signal"></i> Medium</span>
+                                    <span class="recipe-servings"><i class="bi bi-egg-fried"></i> 4 servings</span>
+                                </div>
+                                <div class="recipe-card-footer">
+                                    <div class="recipe-card-price">
+                                        <span class="price-label">Cost per serving:</span>
+                                        <span class="price-value">$5.50</span>
+                                    </div>
+                                    <button class="btn btn-sm btn-primary">
+                                        <i class="bi bi-bookmark"></i> Save Recipe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recipe-card">
+                            <div class="recipe-card-image">
+                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=350&h=250&fit=crop"
+                                    alt="Fresh Salad">
+                                <span class="recipe-badge"><i class="bi bi-clock"></i> 15 min</span>
+                            </div>
+                            <div class="recipe-card-content">
+                                <h4>Mediterranean Salad</h4>
+                                <p class="recipe-card-description">Fresh and healthy salad with tomatoes, cucumbers,
+                                    olives, feta cheese and lemon dressing.</p>
+                                <div class="recipe-card-meta">
+                                    <span class="recipe-difficulty"><i class="bi bi-signal"></i> Easy</span>
+                                    <span class="recipe-servings"><i class="bi bi-egg-fried"></i> 2 servings</span>
+                                </div>
+                                <div class="recipe-card-footer">
+                                    <div class="recipe-card-price">
+                                        <span class="price-label">Cost per serving:</span>
+                                        <span class="price-value">$3.25</span>
+                                    </div>
+                                    <button class="btn btn-sm btn-primary">
+                                        <i class="bi bi-bookmark"></i> Save Recipe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recipe-card">
+                            <div class="recipe-card-image">
+                                <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=350&h=250&fit=crop"
+                                    alt="Creamy Pasta">
+                                <span class="recipe-badge"><i class="bi bi-clock"></i> 25 min</span>
+                            </div>
+                            <div class="recipe-card-content">
+                                <h4>Creamy Alfredo Pasta</h4>
+                                <p class="recipe-card-description">Rich and creamy fettuccine alfredo with parmesan
+                                    cheese, butter, and fresh herbs.</p>
+                                <div class="recipe-card-meta">
+                                    <span class="recipe-difficulty"><i class="bi bi-signal"></i> Easy</span>
+                                    <span class="recipe-servings"><i class="bi bi-egg-fried"></i> 3 servings</span>
+                                </div>
+                                <div class="recipe-card-footer">
+                                    <div class="recipe-card-price">
+                                        <span class="price-label">Cost per serving:</span>
+                                        <span class="price-value">$4.00</span>
+                                    </div>
+                                    <button class="btn btn-sm btn-primary">
+                                        <i class="bi bi-bookmark"></i> Save Recipe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" onclick="moveRecipeCarousel(1)"><i
+                            class="bi bi-chevron-right"></i></button>
+                </div>
+
+                <!-- Mini Recipe Cards Carousel with Search -->
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; color: var(--text-secondary);">Mini
+                    Recipe Cards with Search</h4>
+                <div class="mini-recipe-carousel-container">
+                    <div class="mini-recipe-search">
+                        <input type="text" class="mini-recipe-search-input" placeholder="Search recipes..."
+                            onkeyup="filterMiniRecipes(this.value)">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <div class="carousel-mini-recipe">
+                        <button class="carousel-btn-mini prev" onclick="moveMiniRecipeCarousel(-1)"><i
+                                class="bi bi-chevron-left"></i></button>
+                        <div class="carousel-mini-recipe-track">
+                            <div class="mini-recipe-card active" data-recipe-name="cookies">
+                                <div class="mini-recipe-icon">
+                                    <i class="bi bi-cookie"></i>
+                                </div>
+                                <div class="mini-recipe-content">
+                                    <h5>Chocolate Cookies</h5>
+                                    <p class="mini-recipe-time"><i class="bi bi-clock"></i> 30 min</p>
+                                    <p class="mini-recipe-price">$0.75</p>
+                                    <button class="btn-mini">
+                                        <i class="bi bi-plus-circle"></i> Select
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mini-recipe-card" data-recipe-name="pizza">
+                                <div class="mini-recipe-icon">
+                                    <i class="bi bi-pie-chart"></i>
+                                </div>
+                                <div class="mini-recipe-content">
+                                    <h5>Margherita Pizza</h5>
+                                    <p class="mini-recipe-time"><i class="bi bi-clock"></i> 25 min</p>
+                                    <p class="mini-recipe-price">$3.50</p>
+                                    <button class="btn-mini">
+                                        <i class="bi bi-plus-circle"></i> Select
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mini-recipe-card" data-recipe-name="pasta">
+                                <div class="mini-recipe-icon">
+                                    <i class="bi bi-basket"></i>
+                                </div>
+                                <div class="mini-recipe-content">
+                                    <h5>Penne Pasta</h5>
+                                    <p class="mini-recipe-time"><i class="bi bi-clock"></i> 20 min</p>
+                                    <p class="mini-recipe-price">$2.80</p>
+                                    <button class="btn-mini">
+                                        <i class="bi bi-plus-circle"></i> Select
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mini-recipe-card" data-recipe-name="salad">
+                                <div class="mini-recipe-icon">
+                                    <i class="bi bi-flower2"></i>
+                                </div>
+                                <div class="mini-recipe-content">
+                                    <h5>Caesar Salad</h5>
+                                    <p class="mini-recipe-time"><i class="bi bi-clock"></i> 10 min</p>
+                                    <p class="mini-recipe-price">$2.25</p>
+                                    <button class="btn-mini">
+                                        <i class="bi bi-plus-circle"></i> Select
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mini-recipe-card" data-recipe-name="soup">
+                                <div class="mini-recipe-icon">
+                                    <i class="bi bi-cup-hot"></i>
+                                </div>
+                                <div class="mini-recipe-content">
+                                    <h5>Tomato Soup</h5>
+                                    <p class="mini-recipe-time"><i class="bi bi-clock"></i> 35 min</p>
+                                    <p class="mini-recipe-price">$1.90</p>
+                                    <button class="btn-mini">
+                                        <i class="bi bi-plus-circle"></i> Select
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mini-recipe-card" data-recipe-name="sandwich">
+                                <div class="mini-recipe-icon">
+                                    <i class="bi bi-box"></i>
+                                </div>
+                                <div class="mini-recipe-content">
+                                    <h5>Club Sandwich</h5>
+                                    <p class="mini-recipe-time"><i class="bi bi-clock"></i> 15 min</p>
+                                    <p class="mini-recipe-price">$3.00</p>
+                                    <button class="btn-mini">
+                                        <i class="bi bi-plus-circle"></i> Select
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn-mini next" onclick="moveMiniRecipeCarousel(1)"><i
+                                class="bi bi-chevron-right"></i></button>
+                    </div>
+                    <div class="mini-recipe-indicators">
+                        <span class="mini-indicator active" onclick="goToMiniRecipe(0)"></span>
+                        <span class="mini-indicator" onclick="goToMiniRecipe(1)"></span>
+                        <span class="mini-indicator" onclick="goToMiniRecipe(2)"></span>
+                        <span class="mini-indicator" onclick="goToMiniRecipe(3)"></span>
+                        <span class="mini-indicator" onclick="goToMiniRecipe(4)"></span>
+                        <span class="mini-indicator" onclick="goToMiniRecipe(5)"></span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -3244,6 +3468,179 @@ public class MegaMenuItem
                     <span class="tag">CSS</span>
                     <span class="tag tag-removable">React <span class="tag-remove">×</span></span>
                     <span class="tag tag-removable">Vue <span class="tag-remove">×</span></span>
+                </div>
+            </div>
+
+            <!-- Product List -->
+            <div class="component-group">
+                <h3>Product List</h3>
+                <div class="product-list">
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop"
+                            alt="Product 1" class="product-image">
+                        <div class="product-info">
+                            <h4 class="product-name">Wireless Headphones</h4>
+                            <p class="product-description">Premium noise-canceling headphones with 30h battery life</p>
+                            <div class="product-meta">
+                                <span class="badge badge-success">In Stock</span>
+                                <span class="product-category"><i class="bi bi-tag"></i> Electronics</span>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-current">$299.99</div>
+                            <div class="price-original">$399.99</div>
+                            <div class="price-discount">-25%</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-icon" title="Add to wishlist">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&h=100&fit=crop"
+                            alt="Product 2" class="product-image">
+                        <div class="product-info">
+                            <h4 class="product-name">Smart Watch Pro</h4>
+                            <p class="product-description">Fitness tracking, heart rate monitor, GPS enabled</p>
+                            <div class="product-meta">
+                                <span class="badge badge-warning">Low Stock</span>
+                                <span class="product-category"><i class="bi bi-tag"></i> Wearables</span>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-current">$449.00</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-icon" title="Add to wishlist">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=100&h=100&fit=crop"
+                            alt="Product 3" class="product-image">
+                        <div class="product-info">
+                            <h4 class="product-name">Designer Sunglasses</h4>
+                            <p class="product-description">UV protection, polarized lenses, premium frame</p>
+                            <div class="product-meta">
+                                <span class="badge badge-error">Out of Stock</span>
+                                <span class="product-category"><i class="bi bi-tag"></i> Accessories</span>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-current">$189.99</div>
+                            <div class="price-original">$249.99</div>
+                            <div class="price-discount">-24%</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-icon" title="Add to wishlist">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                            <button class="btn btn-secondary" disabled>
+                                <i class="bi bi-x-circle"></i> Unavailable
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=100&h=100&fit=crop"
+                            alt="Product 4" class="product-image">
+                        <div class="product-info">
+                            <h4 class="product-name">Running Shoes Elite</h4>
+                            <p class="product-description">Lightweight design, breathable mesh, cushioned sole</p>
+                            <div class="product-meta">
+                                <span class="badge badge-success">In Stock</span>
+                                <span class="product-category"><i class="bi bi-tag"></i> Footwear</span>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price-current">$129.99</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-icon" title="Add to wishlist">
+                                <i class="bi bi-heart-fill" style="color: var(--error);"></i>
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price List / Pricing Table -->
+            <div class="component-group">
+                <h3>Price List / Pricing Table</h3>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Basic</h3>
+                            <p>Perfect for individuals</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-currency">$</span>
+                            <span class="price-amount">9</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> 10 Projects</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 5GB Storage</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Email Support</li>
+                            <li class="disabled"><i class="bi bi-x-circle"></i> Priority Support</li>
+                            <li class="disabled"><i class="bi bi-x-circle"></i> Advanced Analytics</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-block">Choose Plan</button>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <p>For growing teams</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-currency">$</span>
+                            <span class="price-amount">29</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Unlimited Projects</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 50GB Storage</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Email Support</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Priority Support</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Advanced Analytics</li>
+                        </ul>
+                        <button class="btn btn-primary btn-block">Choose Plan</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <p>For large organizations</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-currency">$</span>
+                            <span class="price-amount">99</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Unlimited Everything</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 500GB Storage</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 24/7 Phone Support</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Dedicated Account Manager</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Custom Integrations</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-block">Contact Sales</button>
+                    </div>
                 </div>
             </div>
 
@@ -3512,6 +3909,778 @@ public class MegaMenuItem
                             <button class="btn btn-sm btn-secondary"><i class="bi bi-chevron-right"></i></button>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Product Table -->
+            <div class="component-group">
+                <h3>Product Table</h3>
+                <div class="table-container">
+                    <table class="table table-data">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px;">Image</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th style="width: 100px;">Stock</th>
+                                <th style="width: 120px;">Price</th>
+                                <th style="width: 100px;">Status</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=60&h=60&fit=crop"
+                                        alt="Product" class="table-image">
+                                </td>
+                                <td>
+                                    <div class="table-product-info">
+                                        <strong>Wireless Headphones</strong>
+                                        <small>Premium noise-canceling</small>
+                                    </div>
+                                </td>
+                                <td>Electronics</td>
+                                <td><span class="badge badge-success">In Stock</span></td>
+                                <td>
+                                    <div class="table-price">
+                                        <strong>$299.99</strong>
+                                        <small class="text-muted">$399.99</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=60&h=60&fit=crop"
+                                        alt="Product" class="table-image">
+                                </td>
+                                <td>
+                                    <div class="table-product-info">
+                                        <strong>Smart Watch Pro</strong>
+                                        <small>Fitness tracking enabled</small>
+                                    </div>
+                                </td>
+                                <td>Wearables</td>
+                                <td><span class="badge badge-warning">Low Stock</span></td>
+                                <td>
+                                    <div class="table-price">
+                                        <strong>$449.00</strong>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=60&h=60&fit=crop"
+                                        alt="Product" class="table-image">
+                                </td>
+                                <td>
+                                    <div class="table-product-info">
+                                        <strong>Designer Sunglasses</strong>
+                                        <small>UV protection polarized</small>
+                                    </div>
+                                </td>
+                                <td>Accessories</td>
+                                <td><span class="badge badge-error">Out of Stock</span></td>
+                                <td>
+                                    <div class="table-price">
+                                        <strong>$189.99</strong>
+                                        <small class="text-muted">$249.99</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-secondary">Inactive</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=60&h=60&fit=crop"
+                                        alt="Product" class="table-image">
+                                </td>
+                                <td>
+                                    <div class="table-product-info">
+                                        <strong>Running Shoes Elite</strong>
+                                        <small>Lightweight breathable mesh</small>
+                                    </div>
+                                </td>
+                                <td>Footwear</td>
+                                <td><span class="badge badge-success">In Stock</span></td>
+                                <td>
+                                    <div class="table-price">
+                                        <strong>$129.99</strong>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">Active</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pricing Table (Traditional) -->
+            <div class="component-group">
+                <h3>Pricing Comparison Table</h3>
+                <div class="table-container">
+                    <table class="table table-pricing">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th class="pricing-column">
+                                    <div class="pricing-header-cell">
+                                        <div class="plan-name">Basic</div>
+                                        <div class="plan-price">$9<span>/mo</span></div>
+                                    </div>
+                                </th>
+                                <th class="pricing-column featured">
+                                    <div class="pricing-header-cell">
+                                        <span class="featured-badge">Popular</span>
+                                        <div class="plan-name">Professional</div>
+                                        <div class="plan-price">$29<span>/mo</span></div>
+                                    </div>
+                                </th>
+                                <th class="pricing-column">
+                                    <div class="pricing-header-cell">
+                                        <div class="plan-name">Enterprise</div>
+                                        <div class="plan-price">$99<span>/mo</span></div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Projects</strong></td>
+                                <td class="text-center">10</td>
+                                <td class="text-center featured">Unlimited</td>
+                                <td class="text-center">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Storage</strong></td>
+                                <td class="text-center">5GB</td>
+                                <td class="text-center featured">50GB</td>
+                                <td class="text-center">500GB</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Users</strong></td>
+                                <td class="text-center">1</td>
+                                <td class="text-center featured">5</td>
+                                <td class="text-center">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email Support</strong></td>
+                                <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                                <td class="text-center featured"><i class="bi bi-check-circle-fill text-success"></i>
+                                </td>
+                                <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Priority Support</strong></td>
+                                <td class="text-center"><i class="bi bi-x-circle text-muted"></i></td>
+                                <td class="text-center featured"><i class="bi bi-check-circle-fill text-success"></i>
+                                </td>
+                                <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Advanced Analytics</strong></td>
+                                <td class="text-center"><i class="bi bi-x-circle text-muted"></i></td>
+                                <td class="text-center featured"><i class="bi bi-check-circle-fill text-success"></i>
+                                </td>
+                                <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Custom Integrations</strong></td>
+                                <td class="text-center"><i class="bi bi-x-circle text-muted"></i></td>
+                                <td class="text-center featured"><i class="bi bi-x-circle text-muted"></i></td>
+                                <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td><strong>24/7 Phone Support</strong></td>
+                                <td class="text-center"><i class="bi bi-x-circle text-muted"></i></td>
+                                <td class="text-center featured"><i class="bi bi-x-circle text-muted"></i></td>
+                                <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-secondary">Select</button>
+                                </td>
+                                <td class="text-center featured">
+                                    <button class="btn btn-sm btn-primary">Select</button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-secondary">Contact Sales</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Recipe with Ingredients Table -->
+            <div class="component-group">
+                <h3>Recipe with Ingredients</h3>
+                <div class="recipe-container">
+                    <div class="recipe-header">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop"
+                            alt="Recipe" class="recipe-image">
+                        <div class="recipe-info">
+                            <h4>Chocolate Chip Cookies</h4>
+                            <p class="recipe-description">Classic homemade cookies with chocolate chips - soft, chewy,
+                                and delicious!</p>
+                            <div class="recipe-meta">
+                                <span><i class="bi bi-clock"></i> Prep: 15 min</span>
+                                <span><i class="bi bi-fire"></i> Cook: 12 min</span>
+                                <span><i class="bi bi-egg-fried"></i> Servings: 24 cookies</span>
+                                <span><i class="bi bi-speedometer2"></i> Difficulty: Easy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-container" style="margin-top: 1.5rem;">
+                        <table class="table table-recipe">
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">#</th>
+                                    <th>Ingredient</th>
+                                    <th style="width: 150px;">Quantity</th>
+                                    <th style="width: 100px;">Unit</th>
+                                    <th style="width: 120px;">Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>All-purpose flour</td>
+                                    <td>2 ¼</td>
+                                    <td>cups</td>
+                                    <td><span class="badge">Dry</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Baking soda</td>
+                                    <td>1</td>
+                                    <td>tsp</td>
+                                    <td><span class="badge">Dry</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Salt</td>
+                                    <td>1</td>
+                                    <td>tsp</td>
+                                    <td><span class="badge">Dry</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Unsalted butter (softened)</td>
+                                    <td>1</td>
+                                    <td>cup</td>
+                                    <td><span class="badge badge-warning">Dairy</span></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Granulated sugar</td>
+                                    <td>¾</td>
+                                    <td>cup</td>
+                                    <td><span class="badge">Dry</span></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Brown sugar (packed)</td>
+                                    <td>¾</td>
+                                    <td>cup</td>
+                                    <td><span class="badge">Dry</span></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Large eggs</td>
+                                    <td>2</td>
+                                    <td>whole</td>
+                                    <td><span class="badge badge-warning">Dairy</span></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Vanilla extract</td>
+                                    <td>2</td>
+                                    <td>tsp</td>
+                                    <td><span class="badge badge-info">Flavor</span></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Chocolate chips</td>
+                                    <td>2</td>
+                                    <td>cups</td>
+                                    <td><span class="badge badge-success">Add-ins</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="recipe-instructions">
+                        <h5><i class="bi bi-list-ol"></i> Instructions</h5>
+                        <ol class="instructions-list">
+                            <li>Preheat oven to 375°F (190°C). Line baking sheets with parchment paper.</li>
+                            <li>In a medium bowl, whisk together flour, baking soda, and salt. Set aside.</li>
+                            <li>In a large bowl, cream together butter and both sugars until light and fluffy (2-3
+                                minutes).</li>
+                            <li>Beat in eggs one at a time, then add vanilla extract.</li>
+                            <li>Gradually mix in the dry ingredients until just combined.</li>
+                            <li>Fold in chocolate chips with a spatula.</li>
+                            <li>Drop rounded tablespoons of dough onto prepared baking sheets, spacing 2 inches apart.
+                            </li>
+                            <li>Bake for 10-12 minutes or until golden brown around the edges.</li>
+                            <li>Cool on baking sheet for 5 minutes before transferring to a wire rack.</li>
+                        </ol>
+                    </div>
+
+                    <div class="recipe-footer">
+                        <div class="recipe-nutrition">
+                            <h6>Nutrition per cookie</h6>
+                            <div class="nutrition-grid">
+                                <span><strong>Calories:</strong> 180</span>
+                                <span><strong>Fat:</strong> 9g</span>
+                                <span><strong>Carbs:</strong> 24g</span>
+                                <span><strong>Protein:</strong> 2g</span>
+                            </div>
+                        </div>
+                        <div class="recipe-actions">
+                            <button class="btn btn-icon" title="Save Recipe"><i class="bi bi-bookmark"></i></button>
+                            <button class="btn btn-icon" title="Share"><i class="bi bi-share"></i></button>
+                            <button class="btn btn-icon" title="Print"><i class="bi bi-printer"></i></button>
+                            <button class="btn btn-primary"><i class="bi bi-cart-plus"></i> Add to Shopping
+                                List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingredients Table -->
+            <div class="component-group">
+                <h3>Ingredients Inventory</h3>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h4><i class="bi bi-egg-fried"></i> Kitchen Ingredients</h4>
+                        <div class="table-header-actions">
+                            <button class="btn btn-sm btn-secondary">
+                                <i class="bi bi-funnel"></i> Filter
+                            </button>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-plus-lg"></i> Add Ingredient
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table table-ingredients">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">#</th>
+                                <th>Ingredient Name</th>
+                                <th style="width: 120px;">Category</th>
+                                <th style="width: 120px;">Stock Quantity</th>
+                                <th style="width: 100px;">Unit</th>
+                                <th style="width: 120px;">Unit Price</th>
+                                <th style="width: 120px;">Total Value</th>
+                                <th style="width: 120px;">Expiry Date</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <div class="table-ingredient-info">
+                                        <strong>All-Purpose Flour</strong>
+                                        <small>Organic, unbleached</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge">Dry Goods</span></td>
+                                <td><strong>15.5</strong></td>
+                                <td>kg</td>
+                                <td>$2.50</td>
+                                <td><strong>$38.75</strong></td>
+                                <td>2025-12-31</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>
+                                    <div class="table-ingredient-info">
+                                        <strong>Unsalted Butter</strong>
+                                        <small>Premium quality</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-warning">Dairy</span></td>
+                                <td><strong>5.2</strong></td>
+                                <td>kg</td>
+                                <td>$8.99</td>
+                                <td><strong>$46.75</strong></td>
+                                <td><span class="text-warning">2025-01-15</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>
+                                    <div class="table-ingredient-info">
+                                        <strong>Granulated Sugar</strong>
+                                        <small>Fine white sugar</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge">Dry Goods</span></td>
+                                <td><strong>22.0</strong></td>
+                                <td>kg</td>
+                                <td>$1.80</td>
+                                <td><strong>$39.60</strong></td>
+                                <td>2026-06-30</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    <div class="table-ingredient-info">
+                                        <strong>Fresh Eggs</strong>
+                                        <small>Free-range, large</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-warning">Dairy</span></td>
+                                <td><strong>180</strong></td>
+                                <td>units</td>
+                                <td>$0.35</td>
+                                <td><strong>$63.00</strong></td>
+                                <td><span class="text-error">2024-12-05</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>
+                                    <div class="table-ingredient-info">
+                                        <strong>Vanilla Extract</strong>
+                                        <small>Pure, Madagascar</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-info">Flavoring</span></td>
+                                <td><strong>0.5</strong></td>
+                                <td>L</td>
+                                <td>$45.00</td>
+                                <td><strong>$22.50</strong></td>
+                                <td>2027-03-15</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>
+                                    <div class="table-ingredient-info">
+                                        <strong>Dark Chocolate Chips</strong>
+                                        <small>70% cocoa, Belgian</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-success">Add-ins</span></td>
+                                <td><strong>8.5</strong></td>
+                                <td>kg</td>
+                                <td>$12.50</td>
+                                <td><strong>$106.25</strong></td>
+                                <td>2025-09-20</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Delete"><i
+                                                class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="text-right"><strong>Total Inventory Value:</strong></td>
+                                <td colspan="3"><strong class="text-primary" style="font-size: 1.1rem;">$316.85</strong>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Expenses Table -->
+            <div class="component-group">
+                <h3>Expenses Tracker</h3>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h4><i class="bi bi-cash-stack"></i> Monthly Expenses</h4>
+                        <div class="table-header-actions">
+                            <button class="btn btn-sm btn-secondary">
+                                <i class="bi bi-download"></i> Export
+                            </button>
+                            <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-plus-lg"></i> Add Expense
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table table-expenses">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">#</th>
+                                <th style="width: 120px;">Date</th>
+                                <th>Description</th>
+                                <th style="width: 150px;">Category</th>
+                                <th style="width: 120px;">Payment Method</th>
+                                <th style="width: 120px;">Amount</th>
+                                <th style="width: 100px;">Status</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2024-11-20</td>
+                                <td>
+                                    <div class="table-expense-info">
+                                        <strong>Office Rent</strong>
+                                        <small>Monthly payment for Q4</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary"><i class="bi bi-building"></i> Rent</span></td>
+                                <td>Bank Transfer</td>
+                                <td class="expense-amount"><strong>$2,500.00</strong></td>
+                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Receipt"><i
+                                                class="bi bi-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2024-11-18</td>
+                                <td>
+                                    <div class="table-expense-info">
+                                        <strong>Internet & Utilities</strong>
+                                        <small>Fiber optic + electricity</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-info"><i class="bi bi-lightning-charge"></i>
+                                        Utilities</span></td>
+                                <td>Credit Card</td>
+                                <td class="expense-amount"><strong>$350.75</strong></td>
+                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Receipt"><i
+                                                class="bi bi-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2024-11-15</td>
+                                <td>
+                                    <div class="table-expense-info">
+                                        <strong>Office Supplies</strong>
+                                        <small>Paper, pens, printer ink</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge"><i class="bi bi-cart"></i> Supplies</span></td>
+                                <td>Cash</td>
+                                <td class="expense-amount"><strong>$124.50</strong></td>
+                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Receipt"><i
+                                                class="bi bi-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>2024-11-12</td>
+                                <td>
+                                    <div class="table-expense-info">
+                                        <strong>Software Subscriptions</strong>
+                                        <small>Adobe CC, Microsoft 365</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-secondary"><i class="bi bi-laptop"></i> Software</span>
+                                </td>
+                                <td>Credit Card</td>
+                                <td class="expense-amount"><strong>$89.99</strong></td>
+                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Receipt"><i
+                                                class="bi bi-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>2024-11-10</td>
+                                <td>
+                                    <div class="table-expense-info">
+                                        <strong>Client Lunch Meeting</strong>
+                                        <small>Restaurant expenses</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-warning"><i class="bi bi-cup-hot"></i> Meals</span></td>
+                                <td>Credit Card</td>
+                                <td class="expense-amount"><strong>$156.00</strong></td>
+                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Receipt"><i
+                                                class="bi bi-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>2024-11-08</td>
+                                <td>
+                                    <div class="table-expense-info">
+                                        <strong>Marketing Campaign</strong>
+                                        <small>Facebook & Google Ads</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-error"><i class="bi bi-megaphone"></i> Marketing</span>
+                                </td>
+                                <td>Bank Transfer</td>
+                                <td class="expense-amount"><strong>$1,250.00</strong></td>
+                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Receipt"><i
+                                                class="bi bi-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>2024-11-05</td>
+                                <td>
+                                    <div class="table-expense-info">
+                                        <strong>Equipment Maintenance</strong>
+                                        <small>Printer repair service</small>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-secondary"><i class="bi bi-tools"></i> Maintenance</span>
+                                </td>
+                                <td>Cash</td>
+                                <td class="expense-amount"><strong>$75.00</strong></td>
+                                <td><span class="badge badge-warning">Pending</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn btn-sm btn-icon" title="View"><i
+                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Edit"><i
+                                                class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-icon" title="Receipt"><i
+                                                class="bi bi-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" class="text-right"><strong>Total Expenses (November):</strong></td>
+                                <td colspan="3"><strong class="text-error" style="font-size: 1.1rem;">$4,546.24</strong>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
 
@@ -4392,6 +5561,63 @@ public class MegaMenuItem
                             <option value="seo">SEO</option>
                         </optgroup>
                     </select>
+                </div>
+            </div>
+
+            <!-- Select with Icon -->
+            <div class="component-group">
+                <h3>Select with Icon</h3>
+                <div class="form-group">
+                    <label for="select-icon1" class="form-label">Idioma</label>
+                    <div class="input-group">
+                        <i class="bi bi-globe input-icon"></i>
+                        <select id="select-icon1" class="form-select">
+                            <option value="">Selecione o idioma</option>
+                            <option value="pt">Português</option>
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="select-icon2" class="form-label">Moeda</label>
+                    <div class="input-group">
+                        <i class="bi bi-currency-dollar input-icon"></i>
+                        <select id="select-icon2" class="form-select">
+                            <option value="">Selecione a moeda</option>
+                            <option value="brl">BRL - Real Brasileiro</option>
+                            <option value="usd">USD - Dólar Americano</option>
+                            <option value="eur">EUR - Euro</option>
+                            <option value="gbp">GBP - Libra Esterlina</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="select-icon3" class="form-label">Categoria</label>
+                    <div class="input-group">
+                        <i class="bi bi-tag input-icon"></i>
+                        <select id="select-icon3" class="form-select">
+                            <option value="">Selecione uma categoria</option>
+                            <option value="tech">Tecnologia</option>
+                            <option value="business">Negócios</option>
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="select-icon4" class="form-label">Localização</label>
+                    <div class="input-group">
+                        <i class="bi bi-geo-alt input-icon"></i>
+                        <select id="select-icon4" class="form-select">
+                            <option value="">Selecione sua cidade</option>
+                            <option value="sp">São Paulo</option>
+                            <option value="rj">Rio de Janeiro</option>
+                            <option value="bh">Belo Horizonte</option>
+                            <option value="bsb">Brasília</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
